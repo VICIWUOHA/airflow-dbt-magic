@@ -1,0 +1,6 @@
+version: "3.1"
+services:
+  scheduler:
+    user: root
+    volumes:
+      - ./data_lake:/usr/local/airflow/data_lake:rw
