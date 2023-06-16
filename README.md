@@ -1,7 +1,7 @@
 AIRFLOW & DBT PROJECT FOR DATA & ANALYTICS ENGINEERS
 ========
 
-*Author: [Victor Iwuoha](https://linkedin/in/viciwuoha)*
+*Author: [Victor Iwuoha](https://linkedin.com/in/viciwuoha)*
 
 *Date: 16th June 2023*
 
