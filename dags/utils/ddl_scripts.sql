@@ -1,8 +1,9 @@
 --Syntax: PostgreSql
 -- Execute against Data Warehouse
+-- {{params.schema}} would be passed at runtime
 
-DROP TABLE IF EXISTS airflow_dbt_magic.products;
-CREATE TABLE IF NOT EXISTS airflow_dbt_magic.products(
+CREATE SCHEMA IF NOT EXISTS {{params.schema}};
+CREATE TABLE IF NOT EXISTS {{params.schema}}.products(
     id numeric, 
     title varchar, 
     price numeric, 
@@ -16,8 +17,8 @@ CREATE TABLE IF NOT EXISTS airflow_dbt_magic.products(
 
 );
 
-DROP TABLE IF EXISTS airflow_dbt_magic.users;
-CREATE TABLE IF NOT EXISTS airflow_dbt_magic.users(
+-- DROP TABLE IF EXISTS {{params.schema}}.users;
+CREATE TABLE IF NOT EXISTS {{params.schema}}.users(
     id numeric, 
     email varchar, 
     username varchar,
@@ -35,8 +36,8 @@ CREATE TABLE IF NOT EXISTS airflow_dbt_magic.users(
 
 );
 
-DROP TABLE IF EXISTS airflow_dbt_magic.carts;
-CREATE TABLE IF NOT EXISTS airflow_dbt_magic.carts(
+-- DROP TABLE IF EXISTS {{params.schema}}.carts;
+CREATE TABLE IF NOT EXISTS {{params.schema}}.carts(
     cart_id numeric,
 	id varchar,
     date date,
