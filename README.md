@@ -23,6 +23,9 @@ To Run this project a linux environment is highly recommended.
 - An accessible Postgres database with a valid connection URL.
 - Basic Understanding of Python & SQL.
 
+#### Key Takeaways:
+- Airflow Core Concepts such as (Operators, taskflow API, dynamic task mapping, Data-Aware Scheduling, Variables & Connections )
+- DBT UI Familiarization Up to Job Creation with basic conscepts of Macros.
 
 #### Steps for deployment:
 
@@ -35,8 +38,31 @@ To Run this project a linux environment is highly recommended.
 #### Execution:
 
 1. Run the start.sh script. This should start your project, export all environment variables and create a **data_lake/** dir.
-2. Turn on the two **fakestore_** dags and Trigger the Dag Named _**fakestore_elt_pipeline**_. If this Runs SuccessFully , the _**fakestore_dbt_dag**_ would automagically get triggered based on the dataset schedule. See more on [Airflow Datasets](https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/datasets.html)
-3. Wait for the dbt dag to complete running and navigate to the dbt cloud UI to see that the dag was triggered via the API. For more notes on the operation of this dag, see [DbtCloudOperator](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/operators.html). In Standard practices, there are packages that can be used with dbt core to convert your entire dbt project into airflow tasks for easier management. An example is [Astronomer Cosmos](https://github.com/astronomer/astronomer-cosmos)
+2. Create 2 airflow Connections and one Airflow Variable
+    -  a. DBT Cloud connection with the following;
+        -   Connection Id: dbt_cloud_default
+        -   Account Id: YOUR_DBT_ACCOUNT_ID
+        -   Api Token: YOUR_DBT_API_TOKEN
+    &nbsp;
+
+    -  b. Postgres DB Connection as Follows;
+        - Connection Id: postgres_default
+        - Host: rajje.db.elephantsql.com (same as supplied in .env) or any other hosting platform including localhost.
+        - Schema: As supplied during meetup or any other database on your host
+        - Login: User name for schema
+        - Password: Password of User to DB
+        - Port: 5432
+    &nbsp;
+
+    -   c. DBT JOB ID Variable as follows;
+        - Key: dbt_meetup_job
+        - Value: YOUR_CREATED_DBT_JOB_ID
+        - Description: DBT meetup Job ID
+
+3. Turn on the two **fakestore_** dags and Trigger the Dag Named _**fakestore_elt_pipeline**_. If this Runs SuccessFully , the _**fakestore_dbt_dag**_ would automagically get triggered based on the dataset schedule. See more on [Airflow Datasets](https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/datasets.html)
+
+
+4. Wait for the dbt dag to complete running and navigate to the dbt cloud UI to see that the dag was triggered via the API. For more notes on the operation of this dag, see [DbtCloudOperator](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/operators.html). In Standard practices, there are packages that can be used with dbt core to convert your entire dbt project into airflow tasks for easier management. An example is [Astronomer Cosmos](https://github.com/astronomer/astronomer-cosmos)
 
 Credits:
 ===========================
@@ -48,7 +74,7 @@ Docs are available at the following Links
 - [Astronomer](https://docs.astronomer.io/)
 - [DBT Cloud](https://docs.getdbt.com/) and [DBT-Cloud-Airflow Example](https://docs.getdbt.com/guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud)
 
-The compilation of this project was inspired with :heart: by the **dbt-lagos-community** 📦 .
+The compilation of this project was inspired with ❤️ by the **dbt-lagos-community** 📦 .
 
 
 ===========================
