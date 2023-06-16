@@ -4,3 +4,5 @@
 airflow_settings.yaml
 __pycache__/
 astro
+data_lake/*
+.vscode

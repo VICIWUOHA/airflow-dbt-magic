@@ -1,47 +1,54 @@
-Overview
+AIRFLOW & DBT PROJECT FOR DATA & ANALYTICS ENGINEERS
 ========
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+*Author: [Victor Iwuoha](https://linkedin.com/in/viciwuoha)*
 
+*Date: 16th June 2023*
+
+*Event: DBT-Lagos-Meetup*
+
+&nbsp;
 Project Contents
 ================
+This Project is built using the astro cli provisioned by [Astronomer](https://docs.astronomer.io/)
+To Run this project a linux environment is highly recommended.
 
-Your Astro project contains the following files and folders:
 
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes an example DAG that runs every 30 minutes and simply prints the current date. It also includes an empty 'my_custom_function' that you can fill out to execute Python code.
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+#### Prerequisites:
 
-Deploy Your Project Locally
+- Linux Environment/ github codespaces/Ubuntu distribution on Windows
+- Docker Compose
+- A DBT Cloud Account (With an API Key)
+- A .env file at the root of this directory with environment variables exactly as those in .env.example but with actual values.
+- An accessible Postgres database with a valid connection URL.
+- Basic Understanding of Python & SQL.
+
+
+#### Steps for deployment:
+
+- Clone/Fork This Project to your github profile and connect it to your dbt account.
+- Give DBT adequate access to connect to this repository on your git provider (github/gitlab) -> [see steps](https://docs.getdbt.com/docs/cloud/git/connect-github)
+- Create a dbt project with the name airflow_dbt_magic and point it to the dbt subdirectory of this repository.
+- Create a simple DBT JOB in the Production Environment called AIRFLOW DBT JOB and add the commands (dbt build, dbt snapshot dbt docs generate). Note the **Job Id** as well as the **Account id** as they would be needed in Airflow.
+
+
+#### Execution:
+
+1. Run the start.sh script. This should start your project, export all environment variables and create a **data_lake/** dir.
+2. Turn on the two **fakestore_** dags and Trigger the Dag Named _**fakestore_elt_pipeline**_. If this Runs SuccessFully , the _**fakestore_dbt_dag**_ would automagically get triggered based on the dataset schedule. See more on [Airflow Datasets](https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/datasets.html)
+3. Wait for the dbt dag to complete running and navigate to the dbt cloud UI to see that the dag was triggered via the API. For more notes on the operation of this dag, see [DbtCloudOperator](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/operators.html). In Standard practices, there are packages that can be used with dbt core to convert your entire dbt project into airflow tasks for easier management. An example is [Astronomer Cosmos](https://github.com/astronomer/astronomer-cosmos)
+
+Credits:
 ===========================
 
-1. Start Airflow on your local machine by running 'astro dev start'.
+The Structure of this project was adapted from the astronomer provided astro cli and created using astro dev init
+Docs are available at the following Links
 
-This command will spin up 4 Docker containers on your machine, each for a different Airflow component:
+- [Apache Airflow]()
+- [Astronomer](https://docs.astronomer.io/)
+- [DBT Cloud](https://docs.getdbt.com/) and [DBT-Cloud-Airflow Example](https://docs.getdbt.com/guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud)
 
-- Postgres: Airflow's Metadata Database
-- Webserver: The Airflow component responsible for rendering the Airflow UI
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- Triggerer: The Airflow component responsible for triggering deferred tasks
+The compilation of this project was inspired with :heart: by the **dbt-lagos-community** 📦 .
 
-2. Verify that all 4 Docker containers were created by running 'docker ps'.
 
-Note: Running 'astro dev start' will start your project with the Airflow Webserver exposed at port 8080 and Postgres exposed at port 5432. If you already have either of those ports allocated, you can either stop your existing Docker containers or change the port.
-
-3. Access the Airflow UI for your local Airflow project. To do so, go to http://localhost:8080/ and log in with 'admin' for both your Username and Password.
-
-You should also be able to access your Postgres Database at 'localhost:5432/postgres'.
-
-Deploy Your Project to Astronomer
-=================================
-
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://docs.astronomer.io/cloud/deploy-code/
-
-Contact
-=======
-
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support
+===========================
