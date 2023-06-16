@@ -48,7 +48,7 @@ Docs are available at the following Links
 - [Astronomer](https://docs.astronomer.io/)
 - [DBT Cloud](https://docs.getdbt.com/) and [DBT-Cloud-Airflow Example](https://docs.getdbt.com/guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud)
 
-The compilation of this project was inspired with :love by the **dbt-lagos-community** :celebration .
+The compilation of this project was inspired with :heart: by the **dbt-lagos-community** 📦 .
 
 
 ===========================
