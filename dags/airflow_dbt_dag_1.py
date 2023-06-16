@@ -8,9 +8,10 @@ from airflow.decorators import (
 # import astro.sql as aql
 # from astro.sql.table import Table
 from airflow.operators.empty import EmptyOperator
+from airflow.providers.postgres.operators.postgres import PostgresOperator
 from include.transformers import FakeStoreApiTransformer, FAKE_STORE_ARTIFACTS
 from include.helper_scripts import load_to_db
-from utils.utils import dag_owner
+from utils.utils import dag_owner, DBT_JOB_SCHEMA
 
 dag_docs = """ This DAG gets and transforms fictitious retail data from http://fakestoreapi.com into a data warehouse.
                 It also implements airflow concepts such as;
@@ -41,6 +42,13 @@ dag_docs = """ This DAG gets and transforms fictitious retail data from http://f
     doc_md=dag_docs,
 )
 def data_elt_process():
+    create_destination_schema_and_tables = PostgresOperator(
+        task_id="create_destination_tables_if_not_exists",
+        postgres_conn_id="postgres_default",
+        sql="utils/ddl_scripts.sql",
+        params={"schema": DBT_JOB_SCHEMA},
+    )
+
     transformer = FakeStoreApiTransformer()
 
     @task(max_active_tis_per_dag=1)
@@ -80,7 +88,12 @@ def data_elt_process():
     )
 
     # enforce dependencies
-    (upload_files >> transform_tasks >> end_pipeline)
+    (
+        create_destination_schema_and_tables
+        >> upload_files
+        >> transform_tasks
+        >> end_pipeline
+    )
 
 
 dag_run = data_elt_process()
