@@ -23,7 +23,7 @@ dag_docs = """ This DAG gets and transforms fictitious retail data from http://f
 
 @dag(
     dag_id="fakestore_elt_pipeline",
-    start_date=datetime(2021, 6, 11),
+    start_date=datetime(2023, 6, 11),
     # This defines how many instantiations of this DAG (DAG Runs) can execute concurrently. In this case,
     # we're only allowing 1 DAG run at any given time, as opposed to allowing multiple overlapping DAG runs.
     max_active_runs=1,

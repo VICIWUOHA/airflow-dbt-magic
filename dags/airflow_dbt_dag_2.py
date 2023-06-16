@@ -21,7 +21,7 @@ with DAG(
     dag_id="fakestore_dbt_job_pipeline",
     default_args=default_args,
     description="Simple Dag to Trigger Dbt Production Job",
-    start_date=datetime(2021, 6, 11),
+    start_date=datetime(2023, 6, 11),
     schedule=[Dataset("//fakestore_dwh/tables")],
     catchup=False,
     tags=["airflow-dbt-magic"],
