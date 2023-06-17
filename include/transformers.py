@@ -92,7 +92,9 @@ class FakeStoreApiTransformer:
         print("=> Normalizing Dataset..")
         if artifact != "carts":
             artifact_data_trans = pd.json_normalize(data)
-            # artifact_data_trans[""] = artifact_data_trans
+            artifact_data_trans["updated_at"] = datetime.strftime(
+                datetime.now() + timedelta(hours=1), "%Y-%m-%d %H:%M:%S"
+            )
             # artifact_data_trans
         else:
             artifact_data_trans = pd.json_normalize(
