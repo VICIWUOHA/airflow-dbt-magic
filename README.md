@@ -25,13 +25,16 @@ To Run this project a linux environment is highly recommended.
 
 #### Key Takeaways:
 - Airflow Core Concepts such as (Operators, taskflow API, dynamic task mapping, Data-Aware Scheduling, Variables & Connections )
-- DBT UI Familiarization Up to Job Creation with basic conscepts of Macros.
+- DBT UI Familiarization Up to Job Creation with basic concepts of Macros, Documentation, Snapshots for SCD's, and Exposures.
 
 #### Steps for deployment:
 
 - Clone/Fork This Project to your github profile and connect it to your dbt account.
 - Give DBT adequate access to connect to this repository on your git provider (github/gitlab) -> [see steps](https://docs.getdbt.com/docs/cloud/git/connect-github)
 - Create a dbt project with the name airflow_dbt_magic and point it to the dbt subdirectory of this repository.
+- Create two DBT environment Variables as follows;
+    - Key: DBT_LAGOS_MEETUP_DB Value: As used above within airflow .env
+    - Key: DBT_LAGOS_MEETUP_SCHEMA, Value: dbt_DBT_LAGOS_MEETUP_USER (where DBT_LAGOS_MEETUP_USER has the same value as used in .env above). This can basically be aby schema or database.
 - Create a simple DBT JOB in the Production Environment called AIRFLOW DBT JOB and add the commands (dbt build, dbt snapshot dbt docs generate). Note the **Job Id** as well as the **Account id** as they would be needed in Airflow.
 
 
