@@ -19,6 +19,6 @@ sources:
             tests:
               - unique
               - not_null
-# models:
-#   - name: stg_users
-#     description: Staging Model for User Important User Info
+models:
+  - name: stg_users
+    description: Staging Model for Important User Info
