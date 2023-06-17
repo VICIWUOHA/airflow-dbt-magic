@@ -1,0 +1,9 @@
+version: 2
+
+macros:
+  - name: abstract_cte
+    description: A macro to abstract selection of all columns with a cte
+    arguments:
+      - name: tuple_list
+        type: array
+        description: '{{ doc("abstract_cte")}}'

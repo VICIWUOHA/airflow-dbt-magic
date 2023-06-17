@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: top_performing_products
+    description: Shows 10 most rated products on the Fakestore API
+    columns:
+      - name: id
+        description: Product Unique Identifier
+        tests:
+          - not_null
+      - name: product_name
+        description: The Name of the product as it appears on the title bar of the fakestore
+      - name: product_rating
+        description: The rating of this product as starred by customers
+  
+  - name: user_portfolio
+    description: Table showing a Users Portfolio based on purchase history from the fakestore.
+    columns:
+      - name: user_id
+        description: Unique id of a user.
+      - name: full_name
+        description: User's First and Last names.
+      - name: email
+        description: Email of the User
+        tests:
+          - unique
+      - name: lifetime_product_volume,
+        description: Total quantity of Products a user has bought over time
+      - name: unique_products_tried_out
+        description: The Unique number of products the customer has tried out irrespective of their volume
+      - name: no_of_days_in_store,
+        description: Number of days on which the customer has visited the fake store
+      - name: top_product
+        description: Most purchased product by this customer based on
+      - name: top_product_quantity
+        description: The Volume of the top product that the customer has bought
+
+exposures:
+  - name: customer_portfolio_app
+    description: Application Containing Summary Matrica of a Customer's value in the FakeStore business.
+    type: application
+    depends_on:
+      - ref('user_portfolio')
+    owner:
+      email: dbtlagosmeetup@email.com
