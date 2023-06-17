@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS {{params.schema}}.products(
     image varchar, 
     rating_rate decimal, 
     rating_count numeric,
+    updated_at timestamp,
     _dbt_meetup_user varchar,
     uuid varchar primary key
 
@@ -31,6 +32,7 @@ CREATE TABLE IF NOT EXISTS {{params.schema}}.users(
     address_zipcode varchar, 
     firstname varchar, 
     lastname varchar,
+    updated_at timestamp,
     _dbt_meetup_user varchar,
     uuid varchar primary key
 
