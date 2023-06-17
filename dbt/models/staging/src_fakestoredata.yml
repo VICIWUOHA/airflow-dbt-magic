@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: fakestoreapi
+    description: Source schema for all fakestoreapi data
+    database: "{{ env_var('DBT_LAGOS_MEETUP_DB') }}"
+    schema: "{{ env_var('DBT_LAGOS_MEETUP_SCHEMA') }}"
+    tables:
+      - name: carts
+        description: table containing cart info placed by users at the store
+      - name: products
+        description: table containing the products available on the store site
+      - name: users
+        description: table that holds user information
+        tags: ["contains pii"]
+        columns:
+          - name: id
+            description: unique identifier of the user
+            tests:
+              - unique
+              - not_null
+# models:
+#   - name: stg_users
+#     description: Staging Model for User Important User Info
