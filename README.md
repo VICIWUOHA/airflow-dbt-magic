@@ -27,7 +27,7 @@ Workflow
 - Linux Environment/ github codespaces/Ubuntu distribution on Windows
 - Docker Compose
 - A DBT Cloud Account (With an API Key)
-- A .env file at the root of this directory with environment variables exactly as those in .env.example but with actual values
+- A .env file at the root of this directory with environment variables exactly as those in .env.example but with actual values. (Do this edit In Codespaces / with a **machine of 4 Cores, 8GB RAM & 32GB Storage**)
 - An accessible Postgres database with a valid connection URL. (Spin Up a free one on [ElephantSql.com](https://elephantsql.com)). _In the Url, replace *postgres with **postgresql**_
 - Basic Understanding of Python & SQL
 
