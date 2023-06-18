@@ -44,7 +44,7 @@ Workflow
 
 #### Execution:
 
-1. After adding the environment variables to your .env file, Run the start.sh script using the command `bash start.sh` This should start your project, export all environment variables and create a **data_lake/** dir.
+1. After adding the environment variables to your .env file, Run the start.sh script using the command `bash start.sh` This should start your project, export all environment variables and create a **data_lake/** dir. To restart your airflow container after any environment/config changes, simply run the command `astro dev restart`
 2. Create 2 airflow Connections and one Airflow Variable
     -  a. DBT Cloud connection with the following;
         -   Connection Id: dbt_cloud_default
