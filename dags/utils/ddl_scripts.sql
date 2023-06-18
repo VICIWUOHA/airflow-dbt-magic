@@ -1,8 +1,10 @@
 --Syntax: PostgreSql
 -- Execute against Data Warehouse
 -- {{params.schema}} would be passed at runtime
+-- Drop Statements can be commented out if not needed.(but subsequent runs would fail on pkey constraints)
 
 CREATE SCHEMA IF NOT EXISTS {{params.schema}};
+DROP TABLE IF EXISTS {{params.schema}}.products;
 CREATE TABLE IF NOT EXISTS {{params.schema}}.products(
     id numeric, 
     title varchar, 
@@ -18,7 +20,7 @@ CREATE TABLE IF NOT EXISTS {{params.schema}}.products(
 
 );
 
--- DROP TABLE IF EXISTS {{params.schema}}.users;
+DROP TABLE IF EXISTS {{params.schema}}.users;
 CREATE TABLE IF NOT EXISTS {{params.schema}}.users(
     id numeric, 
     email varchar, 
@@ -38,7 +40,7 @@ CREATE TABLE IF NOT EXISTS {{params.schema}}.users(
 
 );
 
--- DROP TABLE IF EXISTS {{params.schema}}.carts;
+DROP TABLE IF EXISTS {{params.schema}}.carts;
 CREATE TABLE IF NOT EXISTS {{params.schema}}.carts(
     cart_id numeric,
 	id varchar,
