@@ -31,7 +31,7 @@ with DAG(
     trigger_dbt_cloud_job = DbtCloudRunJobOperator(
         task_id="trigger_dbt_cloud_job",
         job_id=dbt_job_id,
-        trigger_reason="Triggered From Airflow Dataset Update",
+        trigger_reason=f"Triggered From Airflow Dataset Update configured by {dag_owner}",
         steps_override=None,
         schema_override=DBT_JOB_SCHEMA,
         wait_for_termination=True,
