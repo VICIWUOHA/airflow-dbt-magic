@@ -1,4 +1,4 @@
-AIRFLOW & DBT PROJECT FOR DATA & ANALYTICS ENGINEERS
+AIRFLOW & DBT CLOUD INTEGRATION PROJECT FOR DATA & ANALYTICS ENGINEERS
 ========
 
 *Author: [Victor Iwuoha](https://linkedin.com/in/viciwuoha)*
@@ -14,22 +14,26 @@ This Project is built using the astro cli provisioned by [Astronomer](https://do
 To Run this project a linux environment is highly recommended.
 
 
-#### Prerequisites:
-
-- Linux Environment/ github codespaces/Ubuntu distribution on Windows
-- Docker Compose
-- A DBT Cloud Account (With an API Key)
-- A .env file at the root of this directory with environment variables exactly as those in .env.example but with actual values.
-- An accessible Postgres database with a valid connection URL.
-- Basic Understanding of Python & SQL.
+Workflow
+================
+![workflow diagram](img/workflow.png)
 
 #### Key Takeaways:
 - Airflow Core Concepts such as (Operators, taskflow API, dynamic task mapping, Data-Aware Scheduling, Variables & Connections )
 - DBT UI Familiarization Up to Job Creation with basic concepts of Macros, Documentation, Snapshots for SCD's, and Exposures.
 
+#### Prerequisites:
+
+- Linux Environment/ github codespaces/Ubuntu distribution on Windows
+- Docker Compose
+- A DBT Cloud Account (With an API Key)
+- A .env file at the root of this directory with environment variables exactly as those in .env.example but with actual values
+- An accessible Postgres database with a valid connection URL. (Spin Up a free one on [ElephantSql.com](https://elephantsql.com)). _In the Url, replace *postgres with **postgresql**_
+- Basic Understanding of Python & SQL
+
 #### Steps for deployment:
 
-- Clone/Fork This Project to your github profile and connect it to your dbt account.
+- Fork This Project to your git profile, create a branch named dev, then connect the repository to your dbt account.
 - Give DBT adequate access to connect to this repository on your git provider (github/gitlab) -> [see steps](https://docs.getdbt.com/docs/cloud/git/connect-github)
 - Create a dbt project with the name airflow_dbt_magic and point it to the dbt subdirectory of this repository.
 - Create two DBT environment Variables as follows;
@@ -40,7 +44,7 @@ To Run this project a linux environment is highly recommended.
 
 #### Execution:
 
-1. Run the start.sh script. This should start your project, export all environment variables and create a **data_lake/** dir.
+1. After adding the environment variables to your .env file, Run the start.sh script using the command `bash start.sh` This should start your project, export all environment variables and create a **data_lake/** dir.
 2. Create 2 airflow Connections and one Airflow Variable
     -  a. DBT Cloud connection with the following;
         -   Connection Id: dbt_cloud_default
