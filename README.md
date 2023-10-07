@@ -3,9 +3,9 @@ AIRFLOW & DBT CLOUD INTEGRATION PROJECT FOR DATA & ANALYTICS ENGINEERS
 
 *Author: [Victor Iwuoha](https://linkedin.com/in/viciwuoha)*
 
-*Date: 16th June 2023*
+*Date: 13th & 14th October 2023*
 
-*Event: DBT-Lagos-Meetup*
+*Event: DataFest Africa Workshop*
 
 &nbsp;
 Project Contents
@@ -40,8 +40,8 @@ Deployment & Execution
 - Give DBT adequate access to connect to this repository on your git provider (github/gitlab) -> [see steps](https://docs.getdbt.com/docs/cloud/git/connect-github)
 - **Create a dbt project** with the name airflow_dbt_magic or any name of choice and point it to the dbt subdirectory of this repository.
 - **Create two DBT environment Variables** as follows;
-    - Key: DBT_LAGOS_MEETUP_DB Value: As used above within airflow .env
-    - Key: DBT_LAGOS_MEETUP_SCHEMA, Value: dbt_DBT_LAGOS_MEETUP_USER (where DBT_LAGOS_MEETUP_USER has the same value as used in .env above). This can basically be aby schema or database.
+    - Key: DATAFEST_23_DB Value: As used above within airflow .env
+    - Key: DATAFEST_23_SCHEMA, Value: dbt_DATAFEST_23_USER (where DATAFEST_23_USER has the same value as used in .env above). This can basically be aby schema or database.
 - Create a Production environment and link it to the main branch, then create a simple DBT JOB in the Production Environment called AIRFLOW DBT JOB and add the commands (`dbt build` & `dbt snapshot`) Also select the generate docs on run checkbox. Note the **Job Id** as well as the **Account id** as they would be needed in Airflow.
 
 
@@ -65,9 +65,9 @@ Deployment & Execution
     &nbsp;
 
     -   c. **DBT JOB ID Variable as follows;**
-        - Key: dbt_meetup_job
+        - Key: datafest_meetup_job
         - Value: YOUR_CREATED_DBT_JOB_ID
-        - Description: DBT meetup Job ID
+        - Description: DATAFEST meetup Job ID
 
 3. Turn on the two **fakestore_** dags and Trigger the Dag Named _**fakestore_elt_pipeline**_. If this Runs SuccessFully , the _**fakestore_dbt_job_pipeline**_ would automagically get triggered based on the dataset schedule. See more on [Airflow Datasets](https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/datasets.html).
 
