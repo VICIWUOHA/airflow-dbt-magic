@@ -47,8 +47,10 @@ Deployment & Execution
 
 ### Execution:
 
-1. After adding the environment variables in [**Prerequisites** above](#prerequisites) to your .env file, Run the start.sh script using the command `bash start.sh` This should start your project, export all environment variables and create a **data_lake/** dir. To restart your airflow container after any environment/config changes, simply run the command `astro dev restart`.
-2. Create 2 airflow Connections and one Airflow Variable
+1. Configuration, Connections & Airflow Variables setup
+    - a.  After adding the environment variables in [**Prerequisites** above](#prerequisites) to your .env file, (optionally) rename the `airflow_settings.example.yaml` file as `airflow_settings.yaml` and supply the adequate values, doing so would let astro automatically load these to your airflow instance (_otherwise, follow step 2 below_). 
+    - b.   Run the start.sh script using the command `bash start.sh` This should start your project, export all environment variables and create a **data_lake/** dir. To restart your airflow container after any environment/config changes, simply run the command `astro dev restart`.
+2. Create 2 airflow Connections and one Airflow Variable by using the airflow UI via Admin>Variables
     -  a. **DBT Cloud connection with the following;**
         -   Connection Id: dbt_cloud_default
         -   Account Id: YOUR_DBT_ACCOUNT_ID
