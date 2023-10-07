@@ -8,7 +8,7 @@ from pathlib import Path
 from include.helper_scripts import transform_col_names
 
 FAKE_STORE_ARTIFACTS = ["users", "products", "carts"]
-pipeline_user = os.getenv("DBT_LAGOS_MEETUP_USER")
+pipeline_user = os.getenv("DATAFEST_23_USER")
 
 
 class FakeStoreApiTransformer:
@@ -117,11 +117,11 @@ class FakeStoreApiTransformer:
         print("=> Applying Identifiers..")
         assert (
             pipeline_user is not None
-        ), "You must Include an env variable named DBT_LAGOS_MEETUP_USER"
-        artifact_data_trans["_dbt_meetup_user"] = pipeline_user
+        ), "You must Include an env variable named DATAFEST_23_USER"
+        artifact_data_trans["_datafest_meetup_user"] = pipeline_user
         artifact_data_trans["uuid"] = (
             artifact_data_trans["id"].astype(str)
-            + artifact_data_trans["_dbt_meetup_user"]
+            + artifact_data_trans["_datafest_meetup_user"]
         ).apply(lambda val: md5(val.encode()).hexdigest())
         artifact_data_clean = artifact_data_trans.drop(
             columns=["__v", "password"], errors="ignore"

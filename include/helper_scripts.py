@@ -34,8 +34,8 @@ def transform_col_names(dataset: pd.DataFrame) -> List[str]:
 def load_to_db(
     table_name: str,
     dataset: pd.DataFrame,
-    db_name: str = os.getenv("DBT_LAGOS_MEETUP_DB"),
-    schema: str = "dbt_" + str(os.getenv("DBT_LAGOS_MEETUP_USER")),
+    db_name: str = os.getenv("DATAFEST_23_DB"),
+    schema: str = "dbt_" + str(os.getenv("DATAFEST_23_USER")),
     if_exists="append",
 ) -> Literal[True]:
     """Connects to a Database and Loads a supplied Dataframe to a specific schema and table in that Database
