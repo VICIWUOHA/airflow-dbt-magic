@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS {{params.schema}}.products(
     rating_rate decimal, 
     rating_count numeric,
     updated_at timestamp,
-    _dbt_meetup_user varchar,
+    _datafest_meetup_user varchar,
     uuid varchar primary key
 
 );
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS {{params.schema}}.users(
     firstname varchar, 
     lastname varchar,
     updated_at timestamp,
-    _dbt_meetup_user varchar,
+    _datafest_meetup_user varchar,
     uuid varchar primary key
 
 );
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS {{params.schema}}.carts(
     user_id numeric,
     product_id numeric,
     quantity numeric,
-    _dbt_meetup_user varchar,
+    _datafest_meetup_user varchar,
     uuid varchar primary key
 
 );
