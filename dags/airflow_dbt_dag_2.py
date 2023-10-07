@@ -9,7 +9,7 @@ from airflow.providers.dbt.cloud.operators.dbt import DbtCloudRunJobOperator
 from utils.utils import dag_owner, DBT_JOB_SCHEMA
 
 # define arguments to be used in dag
-dbt_job_id: int = Variable.get("dbt_meetup_job")
+dbt_job_id: int = Variable.get("datafest_meetup_job")
 default_args = {
     "owner": dag_owner,
     "depends_on_past": False,
