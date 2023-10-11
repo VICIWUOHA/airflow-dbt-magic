@@ -2,7 +2,7 @@
 
 {{
     config(
-        target_schema=env_var("DATAFEST_23_SCHEMA"),
+        target_schema=env_var("DBT_DATAFEST_23_SCHEMA"),
         unique_key='id',
         strategy='timestamp',
         updated_at='updated_at',
