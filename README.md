@@ -40,8 +40,8 @@ Deployment & Execution
 - Give DBT adequate access to connect to this repository on your git provider (github/gitlab) -> [see steps](https://docs.getdbt.com/docs/cloud/git/connect-github)
 - **Create a dbt project** with the name airflow_dbt_magic or any name of choice and point it to the dbt subdirectory of this repository.
 - **Create two DBT environment Variables** as follows;
-    - Key: DATAFEST_23_DB Value: As used above within airflow .env
-    - Key: DATAFEST_23_SCHEMA, Value: dbt_DATAFEST_23_USER (where DATAFEST_23_USER has the same value as used in .env above). This can basically be aby schema or database.
+    - Key: DBT_DATAFEST_23_DB Value: As used above within airflow .env
+    - Key: DBT_DATAFEST_23_SCHEMA, Value: dbt_DATAFEST_23_USER (where DATAFEST_23_USER has the same value as used in .env above). This can basically be aby schema or database.
 - Create a Production environment and link it to the main branch, then create a simple DBT JOB in the Production Environment called AIRFLOW DBT JOB and add the commands (`dbt build` & `dbt snapshot`) Also select the generate docs on run checkbox. Note the **Job Id** as well as the **Account id** as they would be needed in Airflow.
 
 
@@ -82,7 +82,7 @@ Credits:
 The Structure of this project was adapted from the astronomer provided astro cli and created using astro dev init
 Docs are available at the following Links
 
-- [Apache Airflow]()
+- [Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/index.html)
 - [Astronomer](https://docs.astronomer.io/)
 - [DBT Cloud](https://docs.getdbt.com/) and [DBT-Cloud-Airflow Example](https://docs.getdbt.com/guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud)
 
