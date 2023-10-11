@@ -1,0 +1,17 @@
+airflow:
+  connections: ## conn_id and conn_type are required
+    - conn_id: postgres_default
+      conn_type: postgres
+      conn_host: YourPostgresDBHost eg; abcd123.efg456.hij.com OR localhost OR IP
+      conn_schema: DB_NAME
+      conn_login: DB_USERNAME
+      conn_password: DB_PASSWORD
+      conn_port: 5432 #or any specific port (the default postgres shipped with airflow uses this port)
+    - conn_id: dbt_cloud_default
+      conn_type: dbt_cloud
+      conn_host: cloud.getdbt.com
+      conn_login: YOUR_DBT_ACCOUNT_ID
+      conn_password: YOUR_DBT_API_TOKEN
+  variables: ## variable_name and variable_value are required
+    - variable_name: datafest_meetup_job
+      variable_value: YOUR_DBT_CLOUD_JOB_ID
