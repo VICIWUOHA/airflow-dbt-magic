@@ -87,4 +87,4 @@ Docs are available at the following Links
 The compilation of this project was inspired with ❤️ by the **dbt-lagos-community** 📦 .
 
 
-===========================
+============================
