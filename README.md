@@ -76,7 +76,7 @@ Deployment & Execution
 
 4. Wait for the dbt dag to complete running and navigate to the dbt cloud UI to see that the dag was triggered via the API. For more notes on the operation of this dag, see [DbtCloudOperator](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/operators.html). In More complex Setups, there are packages that can be used with dbt core to convert your entire dbt project into airflow tasks for easier management. An example is [Astronomer Cosmos](https://github.com/astronomer/astronomer-cosmos).
 
-Credits:
+Credits & Resources:
 ===========================
 
 The Structure of this project was adapted from the astronomer provided astro cli and created using astro dev init
@@ -85,6 +85,16 @@ Docs are available at the following Links
 - [Apache Airflow](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/index.html)
 - [Astronomer](https://docs.astronomer.io/)
 - [DBT Cloud](https://docs.getdbt.com/) and [DBT-Cloud-Airflow Example](https://docs.getdbt.com/guides/orchestration/airflow-and-dbt-cloud/1-airflow-and-dbt-cloud)
+
+LEARN AIRFLOW
+================
+- [Astronomer Academy](https://academy.astronomer.io/)
+
+LEARN DBT
+============
+- [DBT Learn Official Website](https://courses.getdbt.com/collections)
+- [DBT Crash Course - Radovan Bacovic](https://gitlab.com/rbacovic/dbt_tutorial/)
+
 
 The compilation of this project was inspired with ❤️ by the **dbt-lagos-community** 📦 .
 
