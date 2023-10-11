@@ -3,8 +3,8 @@ version: 2
 sources:
   - name: fakestoreapi
     description: Source schema for all fakestoreapi data
-    database: "{{ env_var('DATAFEST_23_DB') }}"
-    schema: "{{ env_var('DATAFEST_23_SCHEMA') }}"
+    database: "{{ env_var('DBT_DATAFEST_23_DB') }}"
+    schema: "{{ env_var('DBT_DATAFEST_23_SCHEMA') }}"
     tables:
       - name: carts
         description: table containing cart info placed by users at the store
